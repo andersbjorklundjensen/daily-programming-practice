@@ -7,4 +7,13 @@ describe('Account class tests', () => {
     account.deposit(100);
     expect(account.getBalance()).toBe(100);
   })
+
+  it('should have a balance of $200 when depositing $100 twice', () => {
+    const account = new Account();
+
+    account.deposit(100);
+    account.deposit(100);
+
+    expect(account.getBalance()).toBe(200);
+  })
 })

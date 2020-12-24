@@ -1,9 +1,11 @@
 export default class Account {
-  public deposit(amount: number) {
+  private balance: number = 0;
 
+  public deposit(amount: number) {
+    this.balance += amount;
   }
   
   public getBalance(): number {
-    return 100;
+    return this.balance;
   }
 }
