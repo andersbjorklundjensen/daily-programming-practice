@@ -19,4 +19,12 @@ describe('Frame class tests', () => {
 
     expect(frame.getTotalPoints()).toBe(5);
   })
+
+  it('should mark a frame as complete if 10 pins has been knocked', () => {
+    const frame = new Frame();
+
+    frame.addRoll(10);
+
+    expect(frame.isComplete()).toBeTruthy();
+  })
 });
