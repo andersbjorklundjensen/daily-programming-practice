@@ -16,4 +16,13 @@ describe('Account class tests', () => {
 
     expect(account.getBalance()).toBe(200);
   })
+
+  it('should not change balance if more money is withdrawn than the account holds', () => {
+    const account = new Account();
+
+    account.deposit(100);
+    account.withdraw(101);
+
+    expect(account.getBalance()).toBe(100);
+  })
 })
