@@ -7,4 +7,11 @@ describe('Transaction class tests', () => {
     expect(transaction.amount).toBe(100);
     expect(transaction.type).toBe(TransactionType.DEPOSIT);
   })
+
+  it('should create a $100 withdrawl transaction correctly', () => {
+    const transaction = new Transaction(100, TransactionType.WITHDRAWL);
+
+    expect(transaction.amount).toBe(100);
+    expect(transaction.type).toBe(TransactionType.WITHDRAWL);
+  })
 });
