@@ -10,4 +10,13 @@ describe('Frame class tests', () => {
 
     expect(frame.getTotalPoints()).toBe(2);
   })
+
+  it('should not be able to knock down more than 10 pins in a frame', () => {
+    const frame = new Frame();
+
+    frame.addRoll(5)
+    frame.addRoll(6)
+
+    expect(frame.getTotalPoints()).toBe(5);
+  })
 });
