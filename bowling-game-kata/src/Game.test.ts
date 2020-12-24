@@ -16,4 +16,12 @@ describe('Game class tests', () => {
 
     expect(game.score()).toBe(2);
   })
+
+  it('should not be allowed to knock down more than 10 pins in one frame', () => {
+    const game = new Game();
+
+    game.roll(11);
+
+    expect(game.score()).toBe(0);
+  })
 });
