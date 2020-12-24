@@ -8,4 +8,12 @@ describe('Game class tests', () => {
 
     expect(game.score()).toBe(1);
   });
+
+  it('should return a score of 2 if 2 pins is knocked down', () => {
+    const game = new Game();
+
+    game.roll(2);
+
+    expect(game.score()).toBe(2);
+  })
 });
