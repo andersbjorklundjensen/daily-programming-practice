@@ -25,4 +25,14 @@ describe('Account class tests', () => {
 
     expect(account.getBalance()).toBe(100);
   })
+
+  it('should contain $100 after adding $100 twice and withdrawing $100', () => {
+    const account = new Account();
+
+    account.deposit(100);
+    account.deposit(100);
+    account.withdraw(100);
+
+    expect(account.getBalance()).toBe(100);
+  })
 })
