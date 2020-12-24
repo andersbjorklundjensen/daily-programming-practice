@@ -27,4 +27,13 @@ describe('Frame class tests', () => {
 
     expect(frame.isComplete()).toBeTruthy();
   })
+
+  it('should mark a frame as complete if 2 rolls has been rolled', () => {
+    const frame = new Frame();
+
+    frame.addRoll(1);
+    frame.addRoll(1);
+
+    expect(frame.isComplete()).toBeTruthy();
+  })
 });
