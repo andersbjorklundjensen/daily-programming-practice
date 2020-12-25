@@ -53,9 +53,6 @@ export default class Game {
     })
 
     return this.frames
-      .reduce((total, current) => {
-        const totall = total + current.getTotalPoints() + current.getBonus()
-        return totall;
-      }, 0);
+      .reduce((total, current) => total + current.getTotalPoints() + current.getBonus(), 0);
   }
 }
