@@ -1,7 +1,6 @@
 export default class Frame {
   private nr: number;
   private rolls: number[] = [];
-  private complete: boolean = false;
   private bonus: number = 0;
 
   public constructor($nr: number) {
