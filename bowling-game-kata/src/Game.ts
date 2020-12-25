@@ -8,7 +8,7 @@ export default class Game {
     const needToAddNewFrame = this.frames.length === 0 ||
       this.frames[this.frames.length - 1].isComplete();
 
-    if (needToAddNewFrame) this.frames.push(new Frame());
+    if (needToAddNewFrame) this.frames.push(new Frame(this.frames.length));
 
     this.frames[this.frames.length - 1].addRoll(pinsKnockedDown);
   }
@@ -37,6 +37,10 @@ export default class Game {
       const nextRoll = nextFrameRolls[0];
       const nextNextRoll = this.frames[nextFrameIndex + 1] ? this.frames[nextFrameIndex + 1].getRolls()[0] : 0;
       return nextRoll + nextNextRoll;
+    }
+
+    if (nextFrameRolls.length === 3) {
+      return nextFrameRolls[0] + nextFrameRolls[1];
     }
 
     return 0;

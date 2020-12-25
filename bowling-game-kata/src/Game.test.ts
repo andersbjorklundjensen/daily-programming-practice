@@ -66,4 +66,13 @@ describe('Game class tests', () => {
 
     expect(game.score()).toBe(60);
   })
+
+  it('should return a sum of 300 for a perfect game', () => {
+    const game = new Game();
+
+    for (let i = 0; i < 12; i++)
+      game.roll(10);
+
+    expect(game.score()).toBe(300);
+  })
 });

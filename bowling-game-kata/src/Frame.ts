@@ -1,12 +1,24 @@
 export default class Frame {
+  private nr: number;
   private rolls: number[] = [];
   private complete: boolean = false;
   private bonus: number = 0;
 
+  public constructor($nr: number) {
+    this.nr = $nr;
+  }
+
   public addRoll(amountOfPinsKnocked: number) {
     if (this.isComplete()) return;
-    if (this.getTotalPoints() + amountOfPinsKnocked > 10) return;
+    if (this.isInvalidRoll(amountOfPinsKnocked)) return;
     this.rolls.push(amountOfPinsKnocked);
+  }
+
+  private isInvalidRoll(amountOfPinsKnocked: number) {
+    if (this.nr != 9) {
+      if (this.getTotalPoints() + amountOfPinsKnocked > 10) return true;
+    }
+    return false;
   }
 
   public addBonus(bonus: number) {
@@ -18,8 +30,15 @@ export default class Frame {
   }
 
   public isComplete() {
-    if (this.rolls.length === 2) return true;
-    if (this.getTotalPoints() === 10) return true;
+    if (this.nr !== 9) {
+      if (this.rolls.length === 2) return true;
+      if (this.getTotalPoints() === 10) return true;
+    }
+
+    if (this.nr === 9) {
+      if (this.rolls.length === 3) return true;
+      if (this.rolls.length === 2 && this.getTotalPoints() < 10)  return true;
+    }
     return false;
   }
 
