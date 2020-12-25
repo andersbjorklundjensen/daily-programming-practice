@@ -34,4 +34,15 @@ describe('Game class tests', () => {
 
     expect(game.score()).toBe(20);
   })
+
+  // spare means to knock down 10 pins in two throws.
+  it('should a bonus to previous frame after bowling a spare', () => {
+    const game = new Game();
+
+    game.roll(5);
+    game.roll(5);
+    game.roll(5);
+
+    expect(game.score()).toBe(20);
+  })
 });

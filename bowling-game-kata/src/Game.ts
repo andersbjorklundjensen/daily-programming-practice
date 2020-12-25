@@ -11,6 +11,8 @@ export default class Game {
     if (needToAddNewFrame) this.frames.push(new Frame());
 
     this.frames[this.frames.length - 1].addRoll(pinsKnockedDown);
+    if (this.frames[this.frames.length - 2] && this.frames[this.frames.length - 2].isSpare())
+      this.frames[this.frames.length - 2].addBonus(pinsKnockedDown);
   }
 
   public isComplete() {
@@ -19,6 +21,6 @@ export default class Game {
 
   public score(): number {
     return this.frames
-      .reduce((total, current) => total + current.getTotalPoints(), 0);
+      .reduce((total, current) => total + current.getTotalPoints() + current.getBonus(), 0);
   }
 }
