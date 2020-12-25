@@ -45,4 +45,25 @@ describe('Game class tests', () => {
 
     expect(game.score()).toBe(20);
   })
+
+  // strike mean to konck down 10 pins with one throw.
+  it('should add a bonus to previous frame after bowling a strike', () => {
+    const game = new Game();
+
+    game.roll(10);
+    game.roll(5)
+    game.roll(5)
+
+    expect(game.score()).toBe(30);
+  })
+
+  it('should add a bonus when bowling three strike in a row', () => {
+    const game = new Game();
+
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+
+    expect(game.score()).toBe(60);
+  })
 });

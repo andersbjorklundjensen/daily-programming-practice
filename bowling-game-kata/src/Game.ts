@@ -26,14 +26,31 @@ export default class Game {
     return 0;
   }
 
+  public calculateStrikeBonus(indexForFrameThatIsStrike: number) {
+    const nextFrameIndex = indexForFrameThatIsStrike + 1;
+    const nextFrameRolls = this.frames[nextFrameIndex] ? this.frames[nextFrameIndex].getRolls() : [];
+
+    if (nextFrameRolls.length === 2)
+      return nextFrameRolls.reduce((total, current) => total + current, 0);
+    
+    if (nextFrameRolls.length === 1) {
+      const nextRoll = nextFrameRolls[0];
+      const nextNextRoll = this.frames[nextFrameIndex + 1] ? this.frames[nextFrameIndex + 1].getRolls()[0] : 0;
+      return nextRoll + nextNextRoll;
+    }
+
+    return 0;
+  }
+
   public score(): number {
     this.frames.map((frame, index) => {
       if (frame.isSpare()) frame.addBonus(this.calculateSpareBonus(index));
+      if (frame.isStrike()) frame.addBonus(this.calculateStrikeBonus(index));
     })
 
     return this.frames
       .reduce((total, current) => {
-        const totall = total + current.getTotalPoints() + current.getBonus() 
+        const totall = total + current.getTotalPoints() + current.getBonus()
         return totall;
       }, 0);
   }

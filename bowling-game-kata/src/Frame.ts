@@ -8,7 +8,7 @@ export default class Frame {
     if (this.getTotalPoints() + amountOfPinsKnocked > 10) return;
     this.rolls.push(amountOfPinsKnocked);
   }
-  
+
   public addBonus(bonus: number) {
     this.bonus = bonus;
   }
@@ -24,9 +24,16 @@ export default class Frame {
   }
 
   public isSpare() {
-    if (this.isComplete() && this.getTotalPoints() === 10 && this.rolls.length === 2) 
+    if (this.isComplete() && this.getTotalPoints() === 10 && this.rolls.length === 2)
       return true;
-    
+
+    return false;
+  }
+
+  public isStrike() {
+    if (this.isComplete() && this.getTotalPoints() === 10 && this.rolls.length === 1)
+      return true;
+
     return false;
   }
 
