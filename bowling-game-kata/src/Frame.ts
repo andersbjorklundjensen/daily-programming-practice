@@ -30,6 +30,10 @@ export default class Frame {
     return false;
   }
 
+  public getRolls() {
+    return this.rolls;
+  }
+
   public getTotalPoints() {
     return this.rolls.reduce((total, current) => total + current, 0);
   }
